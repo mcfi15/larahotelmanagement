@@ -20,3 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
+    Route::controller(App\Http\Controllers\Admin\CustomerController::class)->group(function () {
+        Route::get('/customers', 'index');
+        Route::get('/customers/create', 'create');
+        Route::post('/customers', 'store');
+        Route::get('/customers/{customer}/edit', 'edit');
+        Route::put('/customers/{customer}', 'update');
+    });
+    
+});
