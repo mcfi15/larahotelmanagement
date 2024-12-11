@@ -1,5 +1,7 @@
 @extends('layouts.back')
 
+@section('title', 'Login Page')
+
 @section('content')
 
 <div class="text-center mb-7">
@@ -41,8 +43,10 @@
         <a class="fs--1 fw-semi-bold" href="{{ route('password.request') }}">Forgot Password?</a>
         @endif
     </div>
-  </div><button type="submit" class="btn btn-primary w-100 mb-3">Sign In</button>
-  <div class="text-center"><a class="fs--1 fw-bold" href="sign-up.html">Create an account</a></div>
+  </div><button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+  @if (Route::has('register'))
+  <div class="text-center"><a class="fs--1 fw-bold" href="{{ route('register') }}">Create an account</a></div>
+  @endif
 
   </form>
 
