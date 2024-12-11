@@ -30,10 +30,7 @@ class User extends Authenticatable
         'state',
         'address',
         'zip',
-        'phone',
-        'role_as',
-        'role_as',
-        'role_as',
+        'phone'
     ];
 
     /**

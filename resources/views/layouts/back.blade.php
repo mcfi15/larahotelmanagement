@@ -8,14 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') | {{ $appSetting->website_name }}</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/back/img/favicons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/back/img/favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/back/img/favicons/favicon-16x16.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/back/img/favicons/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset($appSetting->favicon) }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($appSetting->favicon) }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($appSetting->favicon) }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($appSetting->favicon) }}">
     <link rel="manifest" href="{{ asset('assets/back/img/favicons/manifest.json') }}">
-    <meta name="msapplication-TileImage" content="{{ asset('assets/back/img/favicons/mstile-150x150.png') }}">
+    <meta name="msapplication-TileImage" content="{{ asset($appSetting->favicon) }}">
     <meta name="theme-color" content="#ffffff">
     <script src="{{ asset('assets/vendors/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/simplebar/simplebar.min.js') }}"></script>
@@ -43,7 +43,7 @@
         <div class="container">
           <div class="row flex-center min-vh-100 py-5">
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="{{ url('/') }}">
-                <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="{{ asset('assets/back/img/icons/logo.png') }}" alt="phoenix" width="58" /></div>
+                <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="{{ asset($appSetting->favicon) }}" alt="phoenix" width="58" /></div>
               </a>
 
 

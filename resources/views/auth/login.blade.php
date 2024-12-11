@@ -1,5 +1,7 @@
 @extends('layouts.back')
 
+@section('title', 'Login Page')
+
 @section('content')
 
 <div class="text-center mb-7">
