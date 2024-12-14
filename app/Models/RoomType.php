@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Room;
 use App\Models\Image;
+use App\Models\Booking;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -37,5 +38,9 @@ class RoomType extends Model
 
     public function room(){
         return $this->hasMany(Room::class, 'room_type_id', 'id');
+    }
+
+    public function booking(){
+        return $this->hasMany(Booking::class, 'room_id', 'id');
     }
 }

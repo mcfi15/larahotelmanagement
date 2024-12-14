@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\Customer;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingFormRequest;
@@ -19,7 +20,8 @@ class BookingController extends Controller
     public function create(){
         $customers = Customer::all();
         $rooms = Room::all();
-        return view('admin.booking.create', compact('customers', 'rooms'));
+        $roomtypes = RoomType::all();
+        return view('admin.booking.create', compact('customers', 'roomtypes'));
     }
 
     public function store(BookingFormRequest $request){

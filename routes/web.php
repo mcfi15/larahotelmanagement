@@ -13,8 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::controller(App\Http\Controllers\Front\FrontendController::class)->group(function () {
+    Route::get('/','index');
+    // Route::post('/sub', 'storeEmail');
+    Route::get('/about', 'about');
+    Route::get('/contact', 'contact');
+    Route::get('/rooms-and-suites', 'rooms');
+    Route::get('/room-details/{slug}', 'room');
+    Route::post('/room-details/book', 'storeBookings');
+    // Route::post('/post-message', 'postMessage');
+    // Route::get('/offers', 'offer');
+    // Route::get('/worker', 'worker');
+    // Route::get('/hr-services', 'hrservice');
+    // Route::get('/jobs', 'jobs');
+    // Route::get('/view/{slug}', 'jobView');
+    // Route::get('/application/{slug}', 'jobApplication');
+    // Route::post('/application', 'storeApplication');
+
+    // Route::get('/categories', 'product');
+    // Route::get('/product-view/{category_slug}/{product_slug}', 'productView');
+    // Route::get('/place-order/{category_slug}/{product_slug}', 'placeOrder');
+    // Route::post('/place-order', 'storeOrder');
+
+    // Route::get('/search', 'searchProducts');
+    
 });
 
 Auth::routes();
@@ -86,6 +112,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/bookings/{booking}/edit', 'edit');
         Route::put('/bookings/{booking_id}', 'update');
         Route::get('/bookings/{booking_id}/delete', 'destroy');
+
+        Route::get('/online-bookings', 'indexOnline');
     });
 
     Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {

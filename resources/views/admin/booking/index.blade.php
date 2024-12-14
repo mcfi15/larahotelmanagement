@@ -25,7 +25,7 @@
           <thead>
             <tr>
               <th class="sort align-middle ps-3" scope="col" data-sort="projectName" style="width:10%;">CUSTOMER</th>
-              <th class="sort align-middle ps-3" scope="col" data-sort="assigness" style="width:10%;">ROOM</th>
+              <th class="sort align-middle ps-3" scope="col" data-sort="assigness" style="width:10%;">ROOM TYPE</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="start" style="width:10%;">CHECK IN</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="deadline" style="width:10%;">CHECK OUT</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="projectprogress" style="width:10%;">BOOKING DATE</th>
@@ -46,8 +46,8 @@
                 </td>
 
                 <td class="align-middle white-space-nowrap ps-3 projectName py-4">
-                  @if ($booking->room)
-                      {{ $booking->room->room_number }}</td>
+                  @if ($booking->roomtype)
+                      {{ $booking->roomtype->room_type }}</td>
                   @else
                       No Room Found
                   @endif
