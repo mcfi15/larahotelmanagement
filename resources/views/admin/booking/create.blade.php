@@ -33,11 +33,11 @@
             <div class="col-sm-6 col-md-12">
                 <div class="form-floating">
                     <select class="form-select" id="room_id" name="room_id">
-                        @foreach($rooms as $room) 
-                            <option value="{{ $room->id }}">{{ $room->room_number }}</option>
+                        @foreach($roomtypes as $roomtype) 
+                            <option value="{{ $roomtype->id }}">{{ $roomtype->room_type }}</option>
                         @endforeach
                     </select>
-                    <label for="room_id">Select Room Number</label>
+                    <label for="room_id">Select Room Type</label>
                 </div>
                 @error('room_id')
                     <small class="text-danger">{{ $message }}</small>  
