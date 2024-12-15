@@ -215,7 +215,20 @@
 
 @guest
 
-<script>window.location = "/login";</script>
+<div class="container margin_120_95" id="booking_section">
+    <div class="row justify-content-between">
+        <div class="col-xl-4">
+            <div data-cue="slideInUp">
+                <div class="title">
+                   
+                    <h2><a href="{{ url('login') }}">Login</a> To Book Our Rooms</h2>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 @else
 
