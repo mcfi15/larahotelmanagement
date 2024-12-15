@@ -31,7 +31,7 @@
             <div class="col-lg-4">
                 <div class="title">
                     <small>Luxury Experience</small>
-                    <h4>N{{ number_format($room->price,2) }} / Night</h4>
+                    <h4>&#8358;{{ number_format($room->price) }} / Night</h4>
                 </div>
                 <p>{{$room->description}}</p>
             </div>
@@ -108,16 +108,22 @@
 </div>
 <!-- /bg_white -->
 
+@guest
+
+<script>window.location = "/login";</script>
+
+@else
+
 <div class="container margin_120_95" id="booking_section">
     <div class="row justify-content-between">
         <div class="col-xl-4">
             <div data-cue="slideInUp">
                 <div class="title">
-                    <small>Paradise Hotel</small>
+                    <small>{{ $appSetting->website_name }}</small>
                     <h2>Check Availability</h2>
                 </div>
-                <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. </p>
-                <p class="phone_element no_borders"><a href="tel://423424234"><i class="bi bi-telephone"></i><span><em>Info and bookings</em>+41 934 121 1334</span></a></p>
+                
+                <p class="phone_element no_borders"><a href="mailto:{{ $appSetting->email }}"><i class="bi bi-envelope"></i><span><em>Info and bookings</em>{{ $appSetting->email }}</span></a></p>
             </div>
         </div>
         <div class="col-xl-7">
@@ -129,9 +135,12 @@
                         <input type="hidden" name="room_type_id" value="{{ $room->id }}">
                     </div>
                     <div class="row">
-                        
+                        <input type="hidden" name="customer_name" id="" value="{{ Auth::user()->first_name.' '.Auth::user()->last_name }}">
+                        <input type="hidden" name="customer_email" id="" value="{{ Auth::user()->email }}">
+                        <input type="hidden" name="customer_phone" id="" value="{{ Auth::user()->phone }}">
                         <div class="col-lg-3">
                             <div class="form-group">
+                                <label for="">Check In</label>
                                 <input class="form-control" type="date" name="checkin" id="" placeholder="Check In">
                             </div>
                             @error('checkin')
@@ -140,6 +149,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
+                                <label for="">Check Out</label>
                                 <input class="form-control" type="date" name="checkout" id="" placeholder="Check Out">
                                 @error('checkout')
                                 <small class="text-danger">{{ $message }}</small>  
@@ -149,6 +159,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-6">
+                                    <label for="">Adults</label>
                                     <div class="qty-buttons mb-3 version_2">
                                         <input type="button" value="+" class="qtyplus" name="adults_booking">
                                         <input type="number" name="adults_booking" id="adults_booking" value="" class="qty form-control" placeholder="Adults">
@@ -159,6 +170,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-6">
+                                    <label for="">Childs</label>
                                     <div class="mb-3 qty-buttons mb-3 version_2">
                                         <input type="button" value="+" class="qtyplus" name="childs_booking">
                                         <input type="number" name="childs_booking" id="childs_booking" value="" class="qty form-control" placeholder="Childs">
@@ -182,5 +194,7 @@
     <!-- /row -->
 </div>
 <!-- /container -->
+
+@endguest
 
 @endsection

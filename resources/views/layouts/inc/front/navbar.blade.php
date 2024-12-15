@@ -17,22 +17,43 @@
                             <li class="submenu">
                                 <a href="#0" class="show-submenu">Facilities</a>
                                 <ul>
-                                    <li><a href="gallery.html">Masonry Gallery</a></li>
-                                    <li><a href="restaurant.html">Restaurant</a></li>
-                                    <li><a href="menu-of-the-day.html">Menu of the day</a></li>
-                                    <li><a href="news-1.html">Blog</a></li>
-                                    <li><a href="404.html">Error Page</a></li>
-                                    <li><a href="modal-advertise-1.html">Modal Advertise</a></li>
-                                    <li><a href="cookie-bar.html">GDPR Cookie Bar</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li><a href="menu-2.html">Menu Version 2 <span class="custom_badge">Hot</span></a></li>
-                                    <li><a href="menu-3.html">Menu Version 3</a></li>
-                                    <li><a href="menu-4.html">Menu Version 4</a></li>
+                                    @forelse($facilities as $facility)
+                                    <li><a href="{{ url('facility/'.$facility->name.'/'.$facility->slug) }}">{{ $facility->name }}</a></li>
+                                    @empty
+                                    <li><a>No Facility Found</a></li>
+                                    @endforelse
                                 </ul>
                             </li>
+                            
                             <li><a href="{{ url('/about') }}">About</a></li>
                             <li><a href="{{ url('/contact') }}">Contacts</a></li>
+                            @guest
+                                @if (Route::has('login'))
+                                <li><a href="{{ url('/login') }}">Login</a></li>
+                                @endif
+                                @if (Route::has('register'))
+                                <li><a href="{{ url('/register') }}">Register</a></li>
+                                @endif
+                            @else
+
+                            @if(Auth::user()->role_as == '1')
+                            <li><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                            @elseif(Auth::user()->role_as == '2')
+                            <li><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                            @else
+                            <li><a href="{{ url('/home') }}">Account</a></li>
+                            @endif
+                            
+                            <li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                            @endguest
                             <li><a href="#booking_section" class="btn_1">Book Now</a></li>
+                            
                         </ul>
                     </nav>
                 </div>

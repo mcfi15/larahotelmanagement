@@ -26,6 +26,8 @@ class BookingFormRequest extends FormRequest
             'customer_id' => ['required', 'integer'],
             'checkin' => ['required', 'string'],
             'checkout' => ['required', 'string'],
+            'adults_booking' => ['required', 'string'],
+            'childs_booking' => ['required', 'string'],
         ];
     }
 }

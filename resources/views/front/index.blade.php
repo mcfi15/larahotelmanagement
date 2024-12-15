@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('layouts.alert.msgFront')
+
 <div class="hero home-search full-height jarallax" data-jarallax-video="mp4:{{ asset('assets/front/video/sunset.mp4') }},webm:{{ asset('assets/front/video/sunset.webm') }},ogv:{{ asset('assets/front/video/sunset.ogv') }}" data-speed="0.2">
     <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
         <div class="container">
@@ -98,43 +100,30 @@
         <h2 data-cue="slideInUp" data-delay="200">Rooms & Suites</h2>
     </div>
     <div class="row justify-content-center add_bottom_90" data-cues="slideInUp" data-delay="300">
-        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-            <a href="room-details.html" class="box_cat_rooms">
-                <figure>
-                    <div class="background-image" data-background="url({{ asset('assets/front/img/rooms/1.jpg') }})"></div>
-                    <div class="info">
-                        <small>From $250/night</small>
-                        <h3>Junior Suite</h3>
-                        <span>Read more</span>
-                    </div>
-                </figure>
-            </a>
-        </div>
+
+        @forelse ($rooms as $room)
+
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-            <a href="room-details.html" class="box_cat_rooms">
+            <a href="{{ url('room-details/'.$room->slug) }}" class="box_cat_rooms">
                 <figure>
-                    <div class="background-image" data-background="url({{ asset('assets/front/img/rooms/1.jpg') }})"></div>
+                    <div class="background-image" data-background="url({{ asset($room->image) }})"></div>
                     <div class="info">
-                        <small>From $190/night</small>
-                        <h3>Deluxe Room</h3>
+                        <small>From &#8358;{{ number_format($room->price) }}/night</small>
+                        <h3>{{ $room->room_type }}</h3>
                         <span>Read more</span>
                     </div>
                 </figure>
             </a>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-            <a href="room-details.html" class="box_cat_rooms">
-                <figure>
-                    <div class="background-image" data-background="url({{ asset('assets/front/img/rooms/1.jpg') }})"></div>
-                    <div class="info">
-                        <small>From $240/night</small>
-                        <h3>Superior Room</h3>
-                        <span>Read more</span>
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <p class="text-end"><a href="room-list-1.html" class="btn_1 outline mt-2">View all Rooms</a></p>
+            
+        @empty
+
+        <span style="color:red;">No Data Available</span>
+            
+        @endforelse
+        
+        
+        <p class="text-end"><a href="{{ url('rooms-and-suites') }}" class="btn_1 outline mt-2">View all Rooms</a></p>
     </div>
     <!-- /row-->
 
@@ -224,34 +213,65 @@
     <!-- /container-->
 </div>
 
+@guest
+
+<script>window.location = "/login";</script>
+
+@else
+
 <div class="container margin_120_95" id="booking_section">
     <div class="row justify-content-between">
         <div class="col-xl-4">
             <div data-cue="slideInUp">
                 <div class="title">
-                    <small>Paradise Hotel</small>
+                    <small>{{ $appSetting->website_name }}</small>
                     <h2>Check Availability</h2>
                 </div>
-                <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. </p>
-                <p class="phone_element no_borders"><a href="tel://423424234"><i class="bi bi-telephone"></i><span><em>Info and bookings</em>+41 934 121 1334</span></a></p>
+                
+                <p class="phone_element no_borders"><a href="mailto:{{ $appSetting->email }}"><i class="bi bi-envelope"></i><span><em>Info and bookings</em>{{ $appSetting->email }}</span></a></p>
             </div>
         </div>
         <div class="col-xl-7">
             <div data-cue="slideInUp" data-delay="200">
                 <div class="booking_wrapper">
-                    <div class="col-12">
-                        <input type="hidden" id="date_booking" name="date_booking">
-                    </div>
+                    
+                    <form action="{{ url('/booking') }}" method="POST">
+                        @csrf
+                    <input type="hidden" name="customer_name" id="" value="{{ Auth::user()->first_name.' '.Auth::user()->last_name }}">
+                    <input type="hidden" name="customer_email" id="" value="{{ Auth::user()->email }}">
+                    <input type="hidden" name="customer_phone" id="" value="{{ Auth::user()->phone }}">
                     <div class="row">
                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Check In</label>
+                                <input class="form-control" type="date" name="checkin" id="" placeholder="Check In">
+                            </div>
+                            @error('checkin')
+                                <small class="text-danger">{{ $message }}</small>  
+                            @enderror
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="">Check Out</label>
+                                <input class="form-control" type="date" name="checkout" id="" placeholder="Check Out">
+                                @error('checkout')
+                                <small class="text-danger">{{ $message }}</small>  
+                            @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="custom_select">
-                                <select class="wide">
+                                <select class="wide" name="room_type_id">
                                     <option>Select Room</option>
-                                    <option>Double Room</option>
-                                    <option>Deluxe Room</option>
-                                    <option>Superior Room</option>
-                                    <option>Junior Suite</option>
+                                    @forelse ($rooms as $room)
+                                    <option value="{{ $room->id }}">{{ $room->room_type }}</option>
+                                    @empty
+                                    <option value="">No Room Available</option>
+                                    @endforelse
                                 </select>
+                                @error('checkin')
+                                    <small class="text-danger">{{ $message }}</small>  
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -262,6 +282,9 @@
                                         <input type="text" name="adults_booking" id="adults_booking" value="" class="qty form-control" placeholder="Adults">
                                         <input type="button" value="-" class="qtyminus" name="adults_booking">
                                     </div>
+                                    @error('adults_booking')
+                                        <small class="text-danger">{{ $message }}</small>  
+                                    @enderror
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3 qty-buttons mb-3 version_2">
@@ -269,18 +292,26 @@
                                         <input type="text" name="childs_booking" id="childs_booking" value="" class="qty form-control" placeholder="Childs">
                                         <input type="button" value="-" class="qtyminus" name="childs_booking">
                                     </div>
+                                    @error('childs_booking')
+                                        <small class="text-danger">{{ $message }}</small>  
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+
                 </div>
                 <!-- / row -->
-                <p class="text-end mt-4"><a href="#0" class="btn_1 outline">Book Now</a></p>
+                <p class="text-end mt-4"><button type="submit" class="btn_1 outline">Book Now</button></p>
+            </form>
             </div>
         </div>
         <!-- /col -->
     </div>
     <!-- /row -->
 </div>
+
+@endguest
 
 @endsection

@@ -57,11 +57,9 @@
               </div>
               <div class="overflow-auto scrollbar" style="height: 10rem;">
                 <ul class="nav d-flex flex-column mb-2 pb-1">
-                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('admin/dashboard') }}"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
-                  <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
                   
-                  
-                  <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('/home') }}"><span class="me-2 text-900" data-feather="pie-chart"></span>Home</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('/settings') }}"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                   
                 </ul>
               </div>
@@ -76,7 +74,7 @@
                         @csrf
                     </form>
                 </div>
-                <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1" href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>
+                
               </div>
             </div>
           </div>
