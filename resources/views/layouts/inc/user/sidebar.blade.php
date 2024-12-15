@@ -13,7 +13,7 @@
                     <!-- parent pages-->
                     <span class="nav-item-wrapper">
                         <a class="nav-link dropdown-indicator label-1"
-                            href="{{ url('admin/dashboard') }}">
+                            href="{{ url('/home') }}">
                             <div class="d-flex align-items-center">
                                 <div class="dropdown-indicator-icon">
                                 </div><span class="nav-link-icon"><span data-feather="pie-chart"></span></span>
@@ -25,7 +25,7 @@
                     </span>
                 </li>
 
-            @if(Auth::user()->role_as == '1')
+            {{-- @if(Auth::user()->role_as == '1')
 
             </span><!-- parent pages--><span class="nav-item-wrapper"><a
                 class="nav-link dropdown-indicator label-1" href="#users" role="button"
@@ -272,7 +272,7 @@
                     
                 </ul>
             </div>
-            @endif
+            @endif --}}
 
             <li class="nav-item">
                 <!-- parent pages-->

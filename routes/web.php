@@ -25,27 +25,26 @@ Route::controller(App\Http\Controllers\Front\FrontendController::class)->group(f
     Route::get('/rooms-and-suites', 'rooms');
     Route::get('/room-details/{slug}', 'room');
     Route::post('/room-details/book', 'storeBookings');
-    // Route::post('/post-message', 'postMessage');
-    // Route::get('/offers', 'offer');
-    // Route::get('/worker', 'worker');
-    // Route::get('/hr-services', 'hrservice');
-    // Route::get('/jobs', 'jobs');
-    // Route::get('/view/{slug}', 'jobView');
-    // Route::get('/application/{slug}', 'jobApplication');
-    // Route::post('/application', 'storeApplication');
-
-    // Route::get('/categories', 'product');
-    // Route::get('/product-view/{category_slug}/{product_slug}', 'productView');
-    // Route::get('/place-order/{category_slug}/{product_slug}', 'placeOrder');
-    // Route::post('/place-order', 'storeOrder');
-
-    // Route::get('/search', 'searchProducts');
-    
+    Route::post('/booking', 'storeIndexBookings');
+    Route::post('/sub', 'storeNewsletter');
+    Route::get('/facility/{name}/{slug}', 'viewFacility');
+   
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
+    Route::get('/home', 'index');
+
+
+    Route::get('/profile', 'profile');
+    Route::post('/customers/create', 'store');
+    Route::get('/customers/{customer}/edit', 'edit');
+    Route::put('/customers/{customer}', 'update');
+    Route::get('/customers/{customer}/delete', 'destroy');
+});
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
@@ -164,5 +163,14 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
         Route::get('/roles', 'indexRole');
         Route::put('/roles/{user_id}', 'updateRole');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\FacilityController::class)->group(function () {
+        Route::get('/facilities', 'index');
+        Route::get('/facilities/create', 'create');
+        Route::post('/facilities/create', 'store');
+        Route::get('/facilities/{facility}/edit', 'edit');
+        Route::put('/facilities/{facility_id}', 'update');
+        Route::get('/facilities/{facility_id}/delete', 'destroy');
     });
 });

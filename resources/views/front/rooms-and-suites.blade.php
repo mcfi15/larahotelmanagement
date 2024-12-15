@@ -29,7 +29,7 @@
         <div class="row justify-content-start">
             <div class="col-lg-8">
                 <div class="box_item_info" data-jarallax-element="-30">
-                    <small>From ${{ number_format($room->price,2) }}/night</small>
+                    <small>From &#8358;{{ number_format($room->price) }}/night</small>
                     <h2>{{ $room->room_type }}</h2>
                     <p>{{ $room->description }}</p>
                     <div class="facilities clearfix">

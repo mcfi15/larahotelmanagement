@@ -13,8 +13,13 @@ use App\Http\Requests\BookingFormRequest;
 class BookingController extends Controller
 {
     public function index(){
-        $bookings = Booking::latest()->paginate(10);
+        $bookings = Booking::latest()->where('status','0')->paginate(10);
         return view('admin.booking.index', compact('bookings'));
+    }
+
+    public function indexOnline(){
+        $bookings = Booking::latest()->where('status','1')->paginate(10);
+        return view('admin.online-booking.index', compact('bookings'));
     }
 
     public function create(){
@@ -33,7 +38,9 @@ class BookingController extends Controller
             'customer_id' => $validatedData['customer_id'],
             'room_id' => $validatedData['room_id'],
             'checkin' => $validatedData['checkin'],
-            'checkout' => $validatedData['checkout']
+            'checkout' => $validatedData['checkout'],
+            'adults_booking' => $validatedData['adults_booking'],
+            'childs_booking' => $validatedData['childs_booking']
         ]);
 
         return redirect('admin/bookings')->with('message', 'Booking submitted successfully');
@@ -56,7 +63,9 @@ class BookingController extends Controller
                 'customer_id' => $validatedData['customer_id'],
                 'room_id' => $validatedData['room_id'],
                 'checkin' => $validatedData['checkin'],
-                'checkout' => $validatedData['checkout']
+                'checkout' => $validatedData['checkout'],
+                'adults_booking' => $validatedData['adults_booking'],
+                'childs_booking' => $validatedData['childs_booking']
             ]);
             return redirect('admin/bookings')->with('message', 'Booking record updated successfully');
         }else{

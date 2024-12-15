@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'All Bookings')
+@section('title', 'All Online Bookings')
 
 @section('content')
 
 <nav class="mb-2" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
       <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-      <li class="breadcrumb-item active">Bookings</li>
+      <li class="breadcrumb-item active">Online Bookings</li>
     </ol>
   </nav>
   @include('layouts.alert.msg')
@@ -15,9 +15,9 @@
     <div id="projectSummary" data-list='{"valueNames":["projectName","assigness","start","deadline","task","projectprogress","status","action"],"page":6,"pagination":true}'>
       <div class="row mb-4 gx-6 gy-3 align-items-center">
         <div class="col-auto">
-          <h2 class="mb-0">Bookings</h2>
+          <h2 class="mb-0">Online Bookings</h2>
         </div>
-        <div class="col-auto"><a class="btn btn-primary px-5" href="{{ url('admin/bookings/create') }}"><i class="fa-solid fa-plus me-2"></i>Add new booking</a></div>
+        {{-- <div class="col-auto"><a class="btn btn-primary px-5" href="{{ url('admin/bookings/create') }}"><i class="fa-solid fa-plus me-2"></i>Add new booking</a></div> --}}
       </div>
       
       <div class="table-responsive scrollbar">
@@ -25,6 +25,8 @@
           <thead>
             <tr>
               <th class="sort align-middle ps-3" scope="col" data-sort="projectName" style="width:10%;">CUSTOMER</th>
+              <th class="sort align-middle ps-3" scope="col" data-sort="projectName" style="width:10%;">EMAIL</th>
+              <th class="sort align-middle ps-3" scope="col" data-sort="projectName" style="width:10%;">PHONE</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="assigness" style="width:10%;">ROOM TYPE</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="start" style="width:10%;">CHECK IN</th>
               <th class="sort align-middle ps-3" scope="col" data-sort="deadline" style="width:10%;">CHECK OUT</th>
@@ -40,12 +42,20 @@
             @forelse ($bookings as $booking)
             <tr class="position-static">
                 <td class="align-middle white-space-nowrap ps-3 projectName py-4">
-                  @if ($booking->customer)
-                      {{ $booking->customer->name }}</td>
-                  @else
-                      No Customer Found
-                  @endif
+                    {{ $booking->customer_name }}
                 </td>
+
+                <td class="align-middle white-space-nowrap start ps-3 py-4">
+                  {{ $booking->customer_email }}
+                </td>
+
+                
+                  @if ($booking->customer_phone == '')
+                  <td class="align-middle white-space-nowrap start ps-3 py-4">No Phone Number Found</td>
+                  @else
+                  <td class="align-middle white-space-nowrap start ps-3 py-4">{{ $booking->customer_phone }}  </td>
+                  @endif
+                
 
                 <td class="align-middle white-space-nowrap ps-3 projectName py-4">
                   @if ($booking->roomtype)
@@ -75,7 +85,7 @@
                 </td>
                
                 <td >
-                  <a class="btn btn-primary btn-sm" href="{{ url('admin/bookings/'.$booking->id.'/edit') }}"><i class="far fa-edit"></i></a>
+                  
                   <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')" href="{{ url('admin/bookings/'.$booking->id.'/delete') }}"><i class="far fa-trash-alt"></i></a>
                       
                 </td>

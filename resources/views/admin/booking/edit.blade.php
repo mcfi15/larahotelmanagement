@@ -67,6 +67,26 @@
                     <small class="text-danger">{{ $message }}</small>  
                 @enderror
             </div>
+
+            <div class="col-sm-6 col-md-12">
+                <div class="form-floating">
+                    <input class="form-control" id="adults_booking" name="adults_booking" type="number" placeholder="Adults Booking" value="{{ $booking->adults_booking }}"/>
+                    <label for="adults_booking">Adult(s)</label>
+                </div>
+                @error('adults_booking')
+                    <small class="text-danger">{{ $message }}</small>  
+                @enderror
+            </div>
+
+            <div class="col-sm-6 col-md-12">
+                <div class="form-floating">
+                    <input class="form-control" id="childs_booking" name="childs_booking" type="number" placeholder="Childs Booking" value="{{ $booking->childs_booking }}"/>
+                    <label for="childs_booking">Childs Booking</label>
+                </div>
+                @error('childs_booking')
+                    <small class="text-danger">{{ $message }}</small>  
+                @enderror
+            </div>
             
             <div class="col-12 gy-6">
                 <div class="row g-3 justify-content-end">
