@@ -151,6 +151,7 @@
                         <input type="hidden" name="customer_name" id="" value="{{ Auth::user()->first_name.' '.Auth::user()->last_name }}">
                         <input type="hidden" name="customer_email" id="" value="{{ Auth::user()->email }}">
                         <input type="hidden" name="customer_phone" id="" value="{{ Auth::user()->phone }}">
+                        <input type="hidden" name="slug" value="{{ $room->slug }}">
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="">Check In</label>

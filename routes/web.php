@@ -28,6 +28,9 @@ Route::controller(App\Http\Controllers\Front\FrontendController::class)->group(f
     Route::post('/booking', 'storeIndexBookings');
     Route::post('/sub', 'storeNewsletter');
     Route::get('/facility/{name}/{slug}', 'viewFacility');
+    Route::post('/post-message', 'postMessage');
+    Route::get('/bank-payment/{slug}', 'bankPayment');
+    
    
 });
 
@@ -37,13 +40,13 @@ Auth::routes();
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     Route::get('/home', 'index');
+    Route::get('/settings', 'indexSettings');
+    Route::put('/settings/{user_id}', 'updateSettings');
 
+    Route::get('/change-password', 'indexPassword');
+    Route::post('/change-password', 'changePassword');
 
-    Route::get('/profile', 'profile');
-    Route::post('/customers/create', 'store');
-    Route::get('/customers/{customer}/edit', 'edit');
-    Route::put('/customers/{customer}', 'update');
-    Route::get('/customers/{customer}/delete', 'destroy');
+    
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
@@ -160,6 +163,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/users/{user}/edit', 'edit');
         Route::put('/users/{user_id}', 'update');
         Route::get('/users/{user_id}/delete', 'destroy');
+
+        Route::get('/update-profile', 'indexProfile');
+        Route::put('/update-profile/{user_id}', 'updateProfile');
+
+        Route::get('/change-password', 'indexPassword');
+        Route::post('/change-password', 'changePassword');
 
         Route::get('/roles', 'indexRole');
         Route::put('/roles/{user_id}', 'updateRole');

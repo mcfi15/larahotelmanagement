@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('layouts.alert.msgFront')
+
 <div class="hero medium-height jarallax" data-jarallax data-speed="0.2">
     <img class="jarallax-img" src="{{ asset('assets/front/img/hero_home_2.jpg') }}" alt="">
     <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
@@ -41,19 +43,26 @@
         <div class="col-xl-7 col-lg-7 order-lg-1">
             <h3 class="mb-3">Get in Touch</h3>
             <div id="message-contact"></div>
-            <form method="post" action="https://www.ansonika.com/paradise/phpmailer/contact_template_email.php" id="contactform" autocomplete="off">
+            <form action="{{ url('/post-message') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-floating mb-4">
-                            <input class="form-control" type="text" id="name_contact" name="name_contact" placeholder="Name">
-                            <label for="name_contact">Name</label>
+                            <input class="form-control" type="text" id="name" name="name" placeholder="Name">
+                            <label for="name">Name</label>
                         </div>
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>  
+                        @enderror
                     </div>
                     <div class="col-sm-6">
                         <div class="form-floating mb-4">
-                            <input class="form-control" type="email" id="email_contact" name="email_contact" placeholder="Email">
-                            <label for="email_contact">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Email">
+                            <label for="email">Email</label>
                         </div>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>  
+                        @enderror
                     </div>
                 </div>
                 <!-- /row -->
@@ -61,25 +70,31 @@
                     
                     <div class="col-sm-12">
                         <div class="form-floating mb-4">
-                            <input class="form-control" type="text" id="phone_contact" name="phone_contact" placeholder="Subject">
-                            <label for="phone_contact">Subject</label>
+                            <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject">
+                            <label for="subject">Subject</label>
                         </div>
+                        @error('subject')
+                            <div class="alert alert-danger">{{ $message }}</div>  
+                        @enderror
                     </div>
                 </div>
                 <!-- /row -->
                 <div class="form-floating mb-4">
-                    <textarea class="form-control" placeholder="Message" id="message_contact" name="message_contact"></textarea>
-                    <label for="message_contact">Message</label>
+                    <textarea class="form-control" placeholder="Message" id="message" name="message"></textarea>
+                    <label for="message">Message</label>
+                    @error('message')
+                        <div class="alert alert-danger">{{ $message }}</div>  
+                    @enderror
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-6">
                         <div class="form-floating mb-4">
                             <input class="form-control" type="text" id="verify_contact" name="verify_contact" placeholder="Are you human? 3 + 1 =">
                             <label for="verify_contact">Are you human? 3 + 1 =</label>
                         </div>
                     </div>
-                </div>
-                <p class="mt-3"><input type="submit" value="Submit" class="btn_1 outline" id="submit-contact"></p>
+                </div> --}}
+                <p class="mt-3"><button type="submit" class="btn_1 outline">Submit</button></p>
             </form>
         </div>
     </div>
