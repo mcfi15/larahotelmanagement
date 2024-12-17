@@ -59,6 +59,7 @@
                 <ul class="nav d-flex flex-column mb-2 pb-1">
                   
                   <li class="nav-item"><a class="nav-link px-3" href="{{ url('/home') }}"><span class="me-2 text-900" data-feather="pie-chart"></span>Home</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('/change-password') }}"><span class="me-2 text-900" data-feather="lock"></span>Change Password</a></li>
                   <li class="nav-item"><a class="nav-link px-3" href="{{ url('/settings') }}"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                   
                 </ul>

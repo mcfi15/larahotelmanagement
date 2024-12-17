@@ -58,10 +58,10 @@
               <div class="overflow-auto scrollbar" style="height: 10rem;">
                 <ul class="nav d-flex flex-column mb-2 pb-1">
                   <li class="nav-item"><a class="nav-link px-3" href="{{ url('admin/dashboard') }}"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
-                  <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('admin/change-password') }}"> <span class="me-2 text-900" data-feather="lock"></span>Change Password</a></li>
                   
                   
-                  <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="{{ url('admin/update-profile') }}"> <span class="me-2 text-900" data-feather="settings"></span>Settings &amp; Privacy </a></li>
                   
                 </ul>
               </div>
