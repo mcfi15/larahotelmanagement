@@ -29,6 +29,8 @@
     <link href="{{ asset('assets/back/css/theme.min.css') }}" type="text/css" rel="stylesheet" id="style-default">
     <link href="{{ asset('assets/back/css/user.min.css') }}" type="text/css" rel="stylesheet" id="user-style-default">
 
+    {!! htmlScriptTagJsApi() !!}
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
   </head>
@@ -43,7 +45,7 @@
         <div class="container">
           <div class="row flex-center min-vh-100 py-5">
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="{{ url('/') }}">
-                <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="{{ asset($appSetting->favicon) }}" alt="phoenix" width="58" /></div>
+                <div class="d-flex text-center fw-bolder fs-5 d-inline-block"><img src="{{ asset($appSetting->favicon) }}" alt="phoenix" width="58" /></div>
               </a>
 
 

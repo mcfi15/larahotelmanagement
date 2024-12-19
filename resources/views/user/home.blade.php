@@ -20,7 +20,11 @@
               <div class="border-bottom border-dashed border-300 pb-4">
                 <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
                   <div class="col-12 col-sm-auto">
+                    @if (Auth::user()->image == '')
+                    <div class="avatar avatar-5xl"><img class="rounded-circle" src="{{ asset('uploads/profile/avatar.png') }}" alt="" /></div>
+                    @else
                     <div class="avatar avatar-5xl"><img class="rounded-circle" src="{{ asset(Auth::user()->image) }}" alt="" /></div>
+                    @endif
                   </div>
                   <div class="col-12 col-sm-auto flex-1">
                     <h3 style="text-transform: capitalize;">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h3>

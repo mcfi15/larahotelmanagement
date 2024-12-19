@@ -1,28 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.back')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
+<div class="mb-6 justify-content-center">
+    <h4 class="text-1000">Verify Your Email Address!</h4>
+    @if (session('resent'))
+        <div class="alert alert-success" role="alert">
+            {{ __('A fresh verification link has been sent to your email address.') }}
         </div>
-    </div>
-</div>
+    @endif
+    <p class="text-700">Before proceeding, please check your email for a verification link. If you did not receive the email,</p>
+  </div>
+  <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+    @csrf
+  <div class="d-grid"><button class="btn btn-primary" type="submit"><span class="fas fa-angle-left me-2"></span>click here to request another</button></div>
+  </form>
+
+
 @endsection

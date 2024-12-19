@@ -34,9 +34,11 @@ Route::controller(App\Http\Controllers\Front\FrontendController::class)->group(f
    
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/')->middleware('verified')->group(function () {
 
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
     Route::get('/home', 'index');
@@ -47,6 +49,8 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::post('/change-password', 'changePassword');
 
     
+});
+
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {

@@ -46,6 +46,9 @@
             <form action="{{ url('/post-message') }}" method="post">
                 @csrf
                 <div class="row">
+
+                    @guest
+
                     <div class="col-sm-6">
                         <div class="form-floating mb-4">
                             <input class="form-control" type="text" id="name" name="name" placeholder="Name">
@@ -64,6 +67,26 @@
                             <div class="alert alert-danger">{{ $message }}</div>  
                         @enderror
                     </div>
+                    @else
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-4">
+                            <input class="form-control" type="text" id="name" name="name" placeholder="Name" value="{{ Auth::user()->first_name.' '.Auth::user()->last_name }}" readonly>
+                            <label for="name">Name</label>
+                        </div>
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>  
+                        @enderror
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-4">
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}" readonly>
+                            <label for="email">Email</label>
+                        </div>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>  
+                        @enderror
+                    </div>
+                    @endguest
                 </div>
                 <!-- /row -->
                 <div class="row">
@@ -86,14 +109,19 @@
                         <div class="alert alert-danger">{{ $message }}</div>  
                     @enderror
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                     <div class="col-md-6">
-                        <div class="form-floating mb-4">
-                            <input class="form-control" type="text" id="verify_contact" name="verify_contact" placeholder="Are you human? 3 + 1 =">
-                            <label for="verify_contact">Are you human? 3 + 1 =</label>
-                        </div>
+                        {!! htmlFormSnippet() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+
+                            <div>
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                            </div>
+                        @endif
                     </div>
-                </div> --}}
+                </div>
                 <p class="mt-3"><button type="submit" class="btn_1 outline">Submit</button></p>
             </form>
         </div>
