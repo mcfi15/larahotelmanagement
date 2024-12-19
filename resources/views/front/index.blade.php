@@ -57,8 +57,8 @@
         <div class="row justify-content-between flex-lg-row-reverse align-items-center">
             <div class="col-lg-5">
                 <div class="parallax_wrapper">
-                    <img src="{{ asset('assets/front/img/home_2.jpg') }}" alt="" class="img-fluid rounded-img">
-                    <div data-cue="slideInUp" class="img_over"><span data-jarallax-element="-30"><img src="{{ asset('assets/front/img/home_2.jpg') }}" alt="" class="rounded-img"></span></div>
+                    <img src="{{ asset('uploads/photos/walk.jpg') }}" alt="" class="img-fluid rounded-img">
+                    <div data-cue="slideInUp" class="img_over"><span data-jarallax-element="-30"><img src="{{ asset('uploads/photos/wallk2.png') }}" alt="" class="rounded-img"></span></div>
                 </div>
             </div>
             <div class="col-lg-5">
@@ -177,7 +177,7 @@
             <div class="col-lg-6">
                 <div class="pinned-image rounded_container pinned-image--small mb-4">
                     <div class="pinned-image__container">
-                        <img src="{{ asset('assets/front/img/local_amenities_1.jpg') }}" alt="">
+                        <img src="{{ asset('uploads/photos/restur.jpeg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -186,7 +186,7 @@
                     <small>Local Amenities</small>
                     <h3>Restaurants</h3>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <p><a href="about.html" class="btn_1 mt-1 outline">Read more</a></p>
+                    <p><a href="{{ url('about') }}" class="btn_1 mt-1 outline">Read more</a></p>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
             <div class="col-lg-6 order-lg-2">
                 <div class="pinned-image rounded_container pinned-image--small mb-4">
                     <div class="pinned-image__container">
-                        <img src="{{ asset('assets/front/img/local_amenities_1.jpg') }}" alt="">
+                        <img src="{{ asset('uploads/photos/soc.jpeg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                     <small>Local Amenities</small>
                     <h3>Art & Culture</h3>
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <p><a href="about.html" class="btn_1 mt-1 outline">Read more</a></p>
+                    <p><a href="{{ url('about') }}" class="btn_1 mt-1 outline">Read more</a></p>
                 </div>
             </div>
         </div>

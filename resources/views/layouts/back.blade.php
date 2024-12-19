@@ -29,7 +29,7 @@
     <link href="{{ asset('assets/back/css/theme.min.css') }}" type="text/css" rel="stylesheet" id="style-default">
     <link href="{{ asset('assets/back/css/user.min.css') }}" type="text/css" rel="stylesheet" id="user-style-default">
 
-    {!! htmlScriptTagJsApi() !!}
+    {{-- {!! htmlScriptTagJsApi() !!} --}}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

@@ -19,8 +19,8 @@
     <div class="row justify-content-between align-items-center">
         <div class="col-lg-5">
             <div class="parallax_wrapper inverted">
-                <img src="{{ asset('assets/front/img/about_1.jpg') }}" alt="" class="img-fluid rounded-img">
-                <div data-cue="slideInUp" class="img_over"><span data-jarallax-element="-30"><img src="{{ asset('assets/front/img/about_1.jpg') }}" alt="" class="rounded-img"></span></div>
+                <img src="{{ asset('uploads/photos/walk.jpg') }}" alt="" class="img-fluid rounded-img">
+                    <div data-cue="slideInUp" class="img_over"><span data-jarallax-element="-30"><img src="{{ asset('uploads/photos/wallk2.png') }}" alt="" class="rounded-img"></span></div>
             </div>
         </div>
         <div class="col-lg-5">
