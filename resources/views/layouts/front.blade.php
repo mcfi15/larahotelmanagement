@@ -32,7 +32,7 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('assets/front/css/custom.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {!! htmlScriptTagJsApi() !!}
+    {{-- {!! htmlScriptTagJsApi() !!} --}}
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -56,7 +56,7 @@
     <footer class="revealed">
         <div class="footer_bg">
             <div class="gradient_over"></div>
-            <div class="background-image" data-background="url({{ asset('assets/front/img/rooms/3.jpg') }})"></div>
+            <div class="background-image" data-background="url({{ asset('uploads/photos/res.jpeg') }})"></div>
         </div>
         <div class="container">
             <div class="row move_content">
