@@ -48,7 +48,7 @@
                     @if(Auth::user()->image == '')
                     <img class="rounded-circle " src="{{ asset('uploads/profile/avatar.png') }}" alt="" />
                     @else
-                    <img class="rounded-circle " src="{{ asset(Auth::user()->image) }}" alt="" />
+                    <img class="rounded-circle " src="{{ asset(Auth::user()->image ?? '') }}" alt="" />
                     @endif
                   </div>
                   <h6 class="mt-2 text-black" style="text-transform: capitalize;">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h6>

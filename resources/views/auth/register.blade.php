@@ -43,7 +43,21 @@
       </div>
       <div class="col-md-6"><label class="form-label" for="confirm_password">Confirm Password</label><input class="form-control form-icon-input" name="password_confirmation" type="password" placeholder="Confirm Password" /></div>
     </div>
-    <div class="form-check mb-3"><input class="form-check-input" id="termsService" type="checkbox" /><label class="form-label fs--1 text-none" for="termsService">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label></div><button class="btn btn-primary w-100 mb-3">Register</button>
+
+    <div class="mb-3">
+        {!! htmlFormSnippet() !!}
+        @if ($errors->has('g-recaptcha-response'))
+
+            <div>
+                <span class="text-danger">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+            </div>
+        @endif
+    </div>
+
+    {{-- <div class="form-check mb-3"><input class="form-check-input" id="termsService" type="checkbox" /><label class="form-label fs--1 text-none" for="termsService">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label></div> --}}
+    <button class="btn btn-primary w-100 mb-3">Register</button>
     <div class="text-center"><a class="fs--1 fw-bold" href="{{ url('login') }}">Sign in to an existing account</a></div>
   </form>
 

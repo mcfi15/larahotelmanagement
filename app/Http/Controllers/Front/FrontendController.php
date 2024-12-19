@@ -177,7 +177,8 @@ class FrontendController extends Controller
             'name' => 'required|string',
             'email' => 'required|email:filter|string',
             'subject' => 'required|string',
-            'message' => 'required|string'
+            'message' => 'required|string',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
 

@@ -32,6 +32,7 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('assets/front/css/custom.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {!! htmlScriptTagJsApi() !!}
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
