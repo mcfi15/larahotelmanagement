@@ -109,7 +109,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>  
                     @enderror
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-6">
                         {!! htmlFormSnippet() !!}
                         @if ($errors->has('g-recaptcha-response'))
@@ -121,7 +121,7 @@
                             </div>
                         @endif
                     </div>
-                </div>
+                </div> --}}
                 <p class="mt-3"><button type="submit" class="btn_1 outline">Submit</button></p>
             </form>
         </div>
