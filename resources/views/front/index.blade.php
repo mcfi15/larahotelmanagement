@@ -67,9 +67,8 @@
                         <small>About us</small>
                         <h2>Tailored services and the experience of unique holidays</h2>
                     </div>
-                    <p class="lead">Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.</p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <p><em>Maria...the Owner</em></p>
+                    <p class="lead">Welcome to the Western Isle Hotel, your home away from home in the heart of the beautiful western coast. Nestled in a picturesque location, our hotel offers breathtaking views, exceptional service, and a relaxing atmosphere, perfect for both leisure and business travelers.</p>
+                    <p><em>Explore the natural beauty of the surrounding area, filled with scenic landscapes, outdoor activities, and vibrant culture, or simply unwind in our comfortable setting.</em></p>
                 </div>
             </div>
         </div>
@@ -128,36 +127,36 @@
     <!-- /row-->
 
     <div class="title text-center mb-5">
-        <small data-cue="slideInUp">Paradise Hotel</small>
+        <small data-cue="slideInUp">{{ $appSetting->website_name }}</small>
         <h2 data-cue="slideInUp" data-delay="100">Main Facilities</h2>
     </div>
     <div class="row mt-4">
         <div class="col-xl-3 col-md-6">
             <div class="box_facilities no-border" data-cue="slideInUp">
-                <i class="customicon-private-parking"></i>
-                <h3>Private Parking</h3>
-                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+                <i class="customicon-air-condition"></i>
+                <h3>Air Condition</h3>
+                <p>At Western Isle Hotel, we prioritize your comfort. All of our rooms and public spaces are equipped with air conditioning, ensuring a cool and relaxing environment throughout your stay. </p>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="box_facilities" data-cue="slideInUp">
                 <i class="customicon-wifi"></i>
                 <h3>High Speed Wifi</h3>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+                <p>At Western Isle Hotel, we understand the importance of staying connected. That’s why we offer high-speed Wi-Fi throughout the hotel, available in all rooms and common areas. </p>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="box_facilities" data-cue="slideInUp">
+                <i class="customicon-breakfast"></i>
+                <h3>Restaurant</h3>
+                <p>At Western Isle Hotel, we are proud to offer an on-site restaurant serving delicious, freshly prepared meals. </p>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="box_facilities" data-cue="slideInUp">
                 <i class="customicon-cocktail"></i>
-                <h3>Bar & Restaurant</h3>
-                <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="box_facilities" data-cue="slideInUp">
-                <i class="customicon-swimming-pool"></i>
-                <h3>Swimming Pool</h3>
-                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+                <h3>Bar</h3>
+                <p>Unwind and relax at our bar at Western Isle Hotel, where you can enjoy a wide selection of drinks in a cozy and inviting atmosphere. </p>
             </div>
         </div>
     </div>
@@ -185,7 +184,7 @@
                 <div class="title">
                     <small>Local Amenities</small>
                     <h3>Restaurants</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>At Western Isle Hotel, we are proud to offer an on-site restaurant serving delicious, freshly prepared meals. Whether you're starting your day with a hearty breakfast, enjoying a leisurely lunch, or indulging in a memorable dinner, our restaurant provides a warm and inviting atmosphere. Our menu features a variety of dishes made with locally sourced ingredients, catering to all tastes and preferences.</p>
                     <p><a href="{{ url('about') }}" class="btn_1 mt-1 outline">Read more</a></p>
                 </div>
             </div>
@@ -203,7 +202,7 @@
                 <div class="title">
                     <small>Local Amenities</small>
                     <h3>Art & Culture</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>At Western Isle Hotel, we celebrate the rich art and culture of our local area. Our hotel features a collection of carefully curated artworks from regional artists, bringing the vibrant heritage and creativity of the community to life. Whether through stunning paintings, sculptures, or cultural exhibits, we aim to provide our guests with an immersive experience that reflects the spirit of the region. We also host regular cultural events, such as live music performances, art exhibitions, and local craft showcases, allowing our visitors to explore and appreciate the best of local talent and traditions.</p>
                     <p><a href="{{ url('about') }}" class="btn_1 mt-1 outline">Read more</a></p>
                 </div>
             </div>

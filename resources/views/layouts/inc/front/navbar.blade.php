@@ -18,7 +18,7 @@
                                 <a href="#0" class="show-submenu">Facilities</a>
                                 <ul>
                                     @forelse($facilities as $facility)
-                                    <li><a href="{{ url('facility/'.$facility->name.'/'.$facility->slug) }}">{{ $facility->name }}</a></li>
+                                    <li><a href="{{ url('facility/'.$facility->slug) }}">{{ $facility->name }}</a></li>
                                     @empty
                                     <li><a>No Facility Found</a></li>
                                     @endforelse

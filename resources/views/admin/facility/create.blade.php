@@ -6,7 +6,7 @@
 <nav class="mb-2" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
       <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
-      <li class="breadcrumb-item"><a href="{{ url('admin/items') }}">Faciliies</a></li>
+      <li class="breadcrumb-item"><a href="{{ url('admin/facilities') }}">Faciliies</a></li>
       <li class="breadcrumb-item active">New Facility</li>
     </ol>
   </nav>

@@ -27,7 +27,7 @@ Route::controller(App\Http\Controllers\Front\FrontendController::class)->group(f
     Route::post('/room-details/book', 'storeBookings');
     Route::post('/booking', 'storeIndexBookings');
     Route::post('/sub', 'storeNewsletter');
-    Route::get('/facility/{name}/{slug}', 'viewFacility');
+    Route::get('/facility/{slug}', 'viewFacility');
     Route::post('/post-message', 'postMessage');
     Route::get('/bank-payment/{slug}', 'bankPayment');
     
