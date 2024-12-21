@@ -2,6 +2,12 @@
 
 @section('title', 'About Us Page')
 
+@section('meta_title', $appSetting->meta_title)
+
+@section('meta_description', $appSetting->meta_description)
+
+@section('meta_keywords', $appSetting->meta_keywords)
+
 @section('content')
 
 <div class="hero small-height jarallax" data-jarallax data-speed="0.2">

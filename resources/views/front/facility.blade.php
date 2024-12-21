@@ -2,6 +2,12 @@
 
 @section('title', $facility->name)
 
+@section('meta_title', $facility->name)
+
+@section('meta_description', $appSetting->meta_description)
+
+@section('meta_keywords', $appSetting->meta_keywords)
+
 @section('content')
 
 <div class="hero full-height jarallax" data-jarallax data-speed="0.2">
