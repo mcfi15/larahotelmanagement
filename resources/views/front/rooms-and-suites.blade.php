@@ -2,6 +2,13 @@
 
 @section('title', 'Rooms and Suites Page')
 
+@section('meta_title', $appSetting->meta_title)
+
+@section('meta_description', $appSetting->meta_description)
+
+@section('meta_keywords', $appSetting->meta_keywords)
+
+
 @section('content')
 
 <div class="hero medium-height jarallax" data-jarallax data-speed="0.2">

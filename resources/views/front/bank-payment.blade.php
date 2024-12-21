@@ -2,6 +2,12 @@
 
 @section('title', 'Bank Details')
 
+@section('meta_title', $appSetting->meta_title)
+
+@section('meta_description', $appSetting->meta_description)
+
+@section('meta_keywords', $appSetting->meta_keywords)
+
 @section('content')
 
 @guest

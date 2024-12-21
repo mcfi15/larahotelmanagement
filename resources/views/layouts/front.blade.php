@@ -9,8 +9,10 @@
 
     <title>@yield('title') | {{ $appSetting->website_name }} </title>
 
-    <meta name="description" content="">
-    <meta name="author" content="Ansonika">
+    <meta content="title" name="@yield('meta_title')">
+    <meta content="keywords" name="@yield('meta_keywords')">
+    <meta content="description" name="@yield('meta_description')">
+    <meta name="author" content="G7conet">
     
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset($appSetting->favicon) }}" type="image/x-icon">
@@ -71,10 +73,25 @@
                     </ul>
                     <div class="social">
                         <ul>
+                            @if(empty($appSetting->instagram)) 
+                            @else
                             <li><a href="{{ $appSetting->instagram }}"><i class="bi bi-instagram"></i></a></li>
+                            @endif
+                            @if(empty($appSetting->linkedin)) 
+                            @else
                             <li><a href="{{ $appSetting->linkedin }}"><i class="bi bi-linkedin"></i></a></li>
+                            @endif
+                            @if(empty($appSetting->facebook)) 
+                            @else
                             <li><a href="{{ $appSetting->facebook }}"><i class="bi bi-facebook"></i></a></li>
+                            @endif
+                            @if(empty($appSetting->twitter)) 
+                            @else
                             <li><a href="{{ $appSetting->twitter }}"><i class="bi bi-twitter-x"></i></a></li>
+                            @endif
+                            
+                            
+                            
                         </ul>
                     </div>
                 </div>

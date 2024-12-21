@@ -2,11 +2,17 @@
 
 @section('title', 'Home Page')
 
+@section('meta_title', $appSetting->meta_title)
+
+@section('meta_description', $appSetting->meta_description)
+
+@section('meta_keywords', $appSetting->meta_keywords)
+
 @section('content')
 
 @include('layouts.alert.msgFront')
 
-<div class="hero home-search full-height jarallax" data-jarallax-video="mp4:{{ asset('assets/front/video/sunset.mp4') }},webm:{{ asset('assets/front/video/sunset.webm') }},ogv:{{ asset('assets/front/video/sunset.ogv') }}" data-speed="0.2">
+<div class="hero home-search full-height jarallax" data-jarallax-video="mp4:{{ asset('uploads/videos/front.mp4') }}" data-speed="0.2">
     <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
         <div class="container">
             <small class="slide-animated one">Luxury Hotel Experience</small>
@@ -77,9 +83,9 @@
     <div class="pinned-image pinned-image--medium">
         <div class="pinned-image__container" id="section_video">
             <video loop="loop" muted="muted" id="video_home">
-                <source src="{{ asset('assets/front/video/swimming_pool_2.mp4') }}" type="video/mp4">
-                <source src="{{ asset('assets/front/video/swimming_pool_2.mp4') }}" type="video/webm">
-                <source src="{{ asset('assets/front/video/swimming_pool_2.mp4') }}" type="video/ogg">
+                <source src="{{ asset('uploads/videos/swimming_pool_2.mp4') }}" type="video/mp4">
+                <source src="{{ asset('uploads/videos/swimming_pool_2.mp4') }}" type="video/webm">
+                <source src="{{ asset('uploads/videos/swimming_pool_2.mp4') }}" type="video/ogg">
             </video>
             <div class="pinned-image__container-overlay"></div>
         </div>
